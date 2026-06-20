@@ -142,6 +142,35 @@ const translations = {
         contact_addr: "ที่อยู่:",
         contact_addr_val: "ถ.สายหลัก (ตรงข้ามตลาด), อำเภอเมือง",
         contact_phone: "โทรศัพท์:"
+    },
+    zh: {
+        nav_home: "主页",
+        nav_menu: "菜单",
+        nav_vibe: "氛围",
+        nav_location: "联系我们",
+        hero_title: "每天用100%纯鲜奶让您焕然一新",
+        hero_subtitle: "香甜浓郁，完美可口，这就是 Prem Nom Sod 的风格",
+        hero_btn_order: "外卖订购",
+        hero_btn_dir: "查看路线",
+        menu_title: "必尝招牌菜单",
+        menu_desc: "我们最畅销的美食，每个人都喜欢",
+        m1_name: "焦糖鲜奶",
+        m1_desc: "香浓牛奶淋上自制焦糖酱",
+        m2_name: "草莓鲜奶",
+        m2_desc: "丝滑的鲜奶冰沙，顶部配以多汁的草莓果酱",
+        m3_name: "黄油炼乳烤土司",
+        m3_desc: "外脆内软，散发纯正黄油香气",
+        m4_name: "冰巧克力",
+        m4_desc: "浓郁巧克力与纯正鲜奶的完美融合",
+        menu_all: "查看所有菜单",
+        vibe_title: "本店氛围",
+        vibe_desc: "在轻松的氛围中放松身心，拍摄精美的照片",
+        footer_desc: "一家精选优质原料的鲜奶咖啡馆，为您每一杯饮品带来美味与快乐。",
+        contact_time: "营业时间:",
+        contact_time_val: "每天 16:00 - 23:00",
+        contact_addr: "地址:",
+        contact_addr_val: "主路 (市场对面)，Mueang区",
+        contact_phone: "电话:"
     }
 };
 
@@ -154,7 +183,9 @@ function setLanguage(lang) {
     
     // Update toggle button text
     if (langToggleBtn) {
-        langToggleBtn.textContent = lang === 'th' ? 'EN' : 'TH';
+        if (lang === 'th') langToggleBtn.textContent = 'EN';
+        else if (lang === 'en') langToggleBtn.textContent = '中文';
+        else if (lang === 'zh') langToggleBtn.textContent = 'TH';
     }
     
     // Update text content for all elements with data-i18n
@@ -172,6 +203,9 @@ setLanguage(currentLang);
 // Toggle event listener
 if (langToggleBtn) {
     langToggleBtn.addEventListener('click', () => {
-        setLanguage(currentLang === 'th' ? 'en' : 'th');
+        let nextLang = 'th';
+        if (currentLang === 'th') nextLang = 'en';
+        else if (currentLang === 'en') nextLang = 'zh';
+        setLanguage(nextLang);
     });
 }
